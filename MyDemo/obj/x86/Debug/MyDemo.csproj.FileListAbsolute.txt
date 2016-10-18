@@ -1,0 +1,10 @@
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\bin\Debug\MyDemo.exe
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\bin\Debug\MyDemo.exe.config
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.BookMarkForm.resources
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.MainForm.resources
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.Properties.Resources.resources
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.csproj.GenerateResource.Cache
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.exe
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.pdb
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\bin\Debug\MyDemo.pdb
+E:\程序\C#\小程序\浏览器\浏览器示例\MyDemo\obj\x86\Debug\MyDemo.csprojResolveAssemblyReference.cache
