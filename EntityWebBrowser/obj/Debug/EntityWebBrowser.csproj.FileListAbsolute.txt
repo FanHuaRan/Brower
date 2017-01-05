@@ -1,0 +1,5 @@
+E:\Programing\C#\小程序\Brower\EntityWebBrowser\obj\Debug\EntityWebBrowser.csprojResolveAssemblyReference.cache
+E:\Programing\C#\小程序\Brower\EntityWebBrowser\obj\Debug\EntityWebBrowser.BookMarkForm.resources
+E:\Programing\C#\小程序\Brower\EntityWebBrowser\obj\Debug\EntityWebBrowser.MainForm.resources
+E:\Programing\C#\小程序\Brower\EntityWebBrowser\obj\Debug\EntityWebBrowser.Properties.Resources.resources
+E:\Programing\C#\小程序\Brower\EntityWebBrowser\obj\Debug\EntityWebBrowser.csproj.GenerateResource.Cache
