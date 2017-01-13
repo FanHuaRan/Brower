@@ -13,6 +13,7 @@ using DotNet.Utilities;
 using MessageBox = System.Windows.Forms.MessageBox;
 using EntityWebBrowser.Entity;
 using EntityWebBrowser.Services;
+using EntityWebBrowser.UI;
 namespace EntityWebBrowser
 {
     public partial class MainForm : MoveableNoBorderForm
@@ -28,7 +29,9 @@ namespace EntityWebBrowser
             InitializeComponent();
             bookMarkService = ServicesFactory.BookmarkService;
             recordService = ServicesFactory.RecordService;
+            homeUrlService = ServicesFactory.HomeUrlService;
             InitialUI();
+            InitialVarible();
         }
 
         private void InitialUI()
@@ -38,6 +41,12 @@ namespace EntityWebBrowser
             this.Width = 1000;
             this.Height = 680;
             MoveControl();
+        }
+        private void InitialVarible()
+        {
+            this._Records=recordService.FindRecords() as List<Record>;
+            this._Catalogs = bookMarkService.FindCatalogs() as List<Catalog>;
+            this._Bookmarks = bookMarkService.FindBookMarks() as List<BookMark>;
         }
 
         private void MoveControl()
@@ -290,23 +299,6 @@ namespace EntityWebBrowser
             }
             if (e.ClickedItem.Text == "修改")
             {
-                /*
-                string url = _bookmarkDic[title];
-                long catalogId = 0;
-                if (e.ClickedItem.OwnerItem.OwnerItem != null)
-                {
-                    string catalogName = e.ClickedItem.OwnerItem.OwnerItem.Text;
-                    var cataIds = from v in _catalogs where v.CatalogName == catalogName select v.CatalogID;
-                    foreach (var v in cataIds)
-                    {
-                        catalogId = v;
-                    }
-                }
-                BookMark bm = new BookMark();
-                bm.Title = title;
-                bm.CatalogID = catalogId;
-                bm.Url = url;
-                 * */
                 BookMark bookmark = this._Bookmarks.Where(p => p.Title == title).FirstOrDefault();
                 new BookMarkForm(bookmark,_Catalogs).Show();
             }
@@ -319,11 +311,6 @@ namespace EntityWebBrowser
             {
                 this.webBrowser1.Url = new Uri(url);
             }
-        }
-
-        private void toolStripButton1_Click_1(object sender, EventArgs e)
-        {
-            this.panel3.Visible = !this.panel3.Visible;
         }
 
         private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
@@ -357,13 +344,13 @@ namespace EntityWebBrowser
         private void LoadBookMarkTree()
         {
             this.bookMarkTree.Nodes.Clear();
-            var catalogs = bookMarkService.FindCatalogs();
-            var bookMarks = bookMarkService.FindBookMarks();
-            foreach (var v in catalogs)
+            this._Bookmarks= bookMarkService.FindBookMarks() as List<BookMark>;
+            this._Catalogs = bookMarkService.FindCatalogs() as List<Catalog>;
+            foreach (var v in _Catalogs)
             {
                 TreeNode cataNode = new TreeNode(v.CatalogName);
                 cataNode.NodeFont = new Font("楷书", 10);
-                var cataBookMarks = bookMarks.Where(p => p.CatalogID == v.CatalogID);
+                var cataBookMarks = _Bookmarks.Where(p => p.CatalogID == v.CatalogID);
                 foreach (var mark in cataBookMarks)
                 {
                     TreeNode markNode = new TreeNode(mark.Title);
@@ -374,7 +361,7 @@ namespace EntityWebBrowser
             }
             TreeNode noCataNode = new TreeNode("未分类");
             noCataNode.NodeFont = new Font("楷书", 10);
-            var noCaBooks = bookMarks.Where(p => p.CatalogID == 0);
+            var noCaBooks = _Bookmarks.Where(p => p.CatalogID == null);
             foreach (var mark in noCaBooks)
             {
                 TreeNode markNode = new TreeNode(mark.Title);
@@ -387,8 +374,8 @@ namespace EntityWebBrowser
         private void LoadRecordTree()
         {
             this.recordTree.Nodes.Clear();
-            var records = recordService.FindRecords();
-            foreach (var v in records)
+            this._Records= recordService.FindRecords() as List<Record>;
+            foreach (var v in _Records)
             {
                 TreeNode tNode = new TreeNode(v.Title);
                 recordTree.Nodes.Add(tNode);
@@ -408,6 +395,17 @@ namespace EntityWebBrowser
             }
         }
 
+        private string titleRecord = "";
+        private string bookTitle = "";
+        private string catalogName = "";
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            this.panel3.Visible = !this.panel3.Visible;
+            this.titleRecord = "";
+            this.bookTitle = "";
+            this.catalogName = "";
+
+        }
         private void ClearRecorBtt_Click(object sender, EventArgs e)
         {
             recordService.ClearRecords();
@@ -423,23 +421,23 @@ namespace EntityWebBrowser
             }
         }
 
-        private string titleRecord = "";
         private void recordTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             titleRecord = e.Node.Text;
         }
 
-        private string bookTitle = "";
-        private string catalogName = "";
+        
         private void bookMarkTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Parent != null)
             {
                 bookTitle = e.Node.Text;
+                catalogName = "";
             }
             else
             {
                 catalogName = e.Node.Text;
+                bookTitle = "";
             }
         }
 
@@ -448,16 +446,41 @@ namespace EntityWebBrowser
             if (!string.IsNullOrEmpty(bookTitle))
             {
                 bookMarkService.DeleteBookMarkByTitle(bookTitle);
-                LoadBookMarkTree();
             }
+            if (!string.IsNullOrEmpty(catalogName)&&catalogName!="未分类")
+            {
+                bookMarkService.DeleteCatalogByName(catalogName);
+            }
+            LoadBookMarkTree();
         }
-
+        
+        private void UpdateBmBtt_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(bookTitle))
+            {
+                BookMark bookmark = this._Bookmarks.Where(p => p.Title==bookTitle).FirstOrDefault();
+                new BookMarkForm(bookmark, _Catalogs).ShowDialog();
+            }
+            if (!string.IsNullOrEmpty(catalogName) && catalogName != "未分类")
+            {
+                Catalog catalog = this._Catalogs.Where(p => p.CatalogName == catalogName).FirstOrDefault();
+                new CatalogForm(catalog).ShowDialog();
+            }
+            LoadBookMarkTree();
+           
+        }
         private void 保存网页ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //if (HtmlClass.SaveHtml(this.webBrowser1.Url.ToString(),
             //    string.Format("{0}\\Html\\{1}.html", Application.StartupPath, this.webBrowser1.DocumentTitle)))
             //    MessageBox.Show("保存成功");
         }
+
+        private void 帮助ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
 

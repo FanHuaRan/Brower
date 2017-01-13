@@ -46,13 +46,12 @@ namespace EntityWebBrowser.Services.Impl
 
         public void DeleteBookMark(long id)
         {
-            List<BookMark> bookMarks = this.bookMarkManager.FindAll() as List<BookMark>;
-            bookMarks.ForEach(p =>
+            BookMark bookMark = this.bookMarkManager.FindById(id);
+            if (bookMark != null)
             {
-                this.bookMarkManager.DeleteById(p.BookMarkID);
-            });
+                this.bookMarkManager.DeleteById(bookMark.BookMarkID);
+            }
         }
-
         public void DeleteBookMarksByCatalog(long catalogId)
         {
             List<BookMark> bookMarks = bookMarkManager.FindByCatalog(catalogId) as List<BookMark>;

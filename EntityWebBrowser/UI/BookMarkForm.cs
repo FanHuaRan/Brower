@@ -26,7 +26,7 @@ namespace EntityWebBrowser
         {
             InitializeComponent();
             bookMarkService = ServicesFactory.BookmarkService;
-            catalogs = bookMarkService.FindBookMarks() as List<Catalog>;
+            catalogs = bookMarkService.FindCatalogs() as List<Catalog>;
             FillBookMark();
             this.cataLogCbb.Text =catalog;
             this.titleTxtbox.Text=title;

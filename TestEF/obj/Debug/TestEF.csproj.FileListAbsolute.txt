@@ -12,3 +12,17 @@ E:\Programing\C#\小程序\Brower\TestEF\bin\Debug\System.Data.SQLite.xml
 E:\Programing\C#\小程序\Brower\TestEF\obj\Debug\TestEF.csprojResolveAssemblyReference.cache
 E:\Programing\C#\小程序\Brower\TestEF\obj\Debug\TestEF.exe
 E:\Programing\C#\小程序\Brower\TestEF\obj\Debug\TestEF.pdb
+E:\Programing\c#\Brower\TestEF\bin\Debug\TestEF.exe.config
+E:\Programing\c#\Brower\TestEF\bin\Debug\TestEF.exe
+E:\Programing\c#\Brower\TestEF\bin\Debug\TestEF.pdb
+E:\Programing\c#\Brower\TestEF\bin\Debug\EntityFramework.dll
+E:\Programing\c#\Brower\TestEF\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programing\c#\Brower\TestEF\bin\Debug\System.Data.SQLite.dll
+E:\Programing\c#\Brower\TestEF\bin\Debug\System.Data.SQLite.EF6.dll
+E:\Programing\c#\Brower\TestEF\bin\Debug\System.Data.SQLite.Linq.dll
+E:\Programing\c#\Brower\TestEF\bin\Debug\EntityFramework.xml
+E:\Programing\c#\Brower\TestEF\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programing\c#\Brower\TestEF\bin\Debug\System.Data.SQLite.xml
+E:\Programing\c#\Brower\TestEF\obj\Debug\TestEF.csprojResolveAssemblyReference.cache
+E:\Programing\c#\Brower\TestEF\obj\Debug\TestEF.exe
+E:\Programing\c#\Brower\TestEF\obj\Debug\TestEF.pdb

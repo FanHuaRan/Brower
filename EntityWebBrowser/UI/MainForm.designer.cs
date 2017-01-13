@@ -78,6 +78,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -109,7 +110,7 @@
             this.minBtt.Name = "minBtt";
             this.minBtt.Size = new System.Drawing.Size(28, 23);
             this.minBtt.TabIndex = 2;
-            this.minBtt.Text = "button2";
+            this.minBtt.Text = "-";
             this.toolTip1.SetToolTip(this.minBtt, "最小化");
             this.minBtt.UseVisualStyleBackColor = true;
             this.minBtt.Click += new System.EventHandler(this.minBtt_Click);
@@ -121,7 +122,7 @@
             this.quitBtt.Name = "quitBtt";
             this.quitBtt.Size = new System.Drawing.Size(28, 23);
             this.quitBtt.TabIndex = 3;
-            this.quitBtt.Text = "button3";
+            this.quitBtt.Text = "×";
             this.toolTip1.SetToolTip(this.quitBtt, "退出");
             this.quitBtt.UseVisualStyleBackColor = true;
             this.quitBtt.Click += new System.EventHandler(this.quitBtt_Click);
@@ -133,7 +134,7 @@
             this.reFormSizebtt.Name = "reFormSizebtt";
             this.reFormSizebtt.Size = new System.Drawing.Size(30, 23);
             this.reFormSizebtt.TabIndex = 1;
-            this.reFormSizebtt.Text = "button1";
+            this.reFormSizebtt.Text = "□";
             this.reFormSizebtt.UseVisualStyleBackColor = true;
             this.reFormSizebtt.Click += new System.EventHandler(this.reFormSizebtt_Click);
             // 
@@ -144,7 +145,8 @@
             this.查看ToolStripMenuItem,
             this.收藏ToolStripMenuItem,
             this.帮助ToolStripMenuItem,
-            this.工具ToolStripMenuItem});
+            this.工具ToolStripMenuItem,
+            this.关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(998, 25);
@@ -170,8 +172,9 @@
             // 打开网页ToolStripMenuItem
             // 
             this.打开网页ToolStripMenuItem.Name = "打开网页ToolStripMenuItem";
-            this.打开网页ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.打开网页ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.打开网页ToolStripMenuItem.Text = "打开网页";
+//            this.打开网页ToolStripMenuItem.Click += new System.EventHandler(this.打开网页ToolStripMenuItem_Click);
             // 
             // 查看ToolStripMenuItem
             // 
@@ -198,6 +201,7 @@
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.帮助ToolStripMenuItem.Text = "帮助";
+            this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // 工具ToolStripMenuItem
             // 
@@ -213,25 +217,25 @@
             // 清楚浏览记录ToolStripMenuItem
             // 
             this.清楚浏览记录ToolStripMenuItem.Name = "清楚浏览记录ToolStripMenuItem";
-            this.清楚浏览记录ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.清楚浏览记录ToolStripMenuItem.Text = "清楚浏览记录";
+            this.清楚浏览记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.清楚浏览记录ToolStripMenuItem.Text = "清除浏览记录";
             // 
             // 截图小工具ToolStripMenuItem
             // 
             this.截图小工具ToolStripMenuItem.Name = "截图小工具ToolStripMenuItem";
-            this.截图小工具ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.截图小工具ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.截图小工具ToolStripMenuItem.Text = "截图小工具";
             // 
             // 下载管理ToolStripMenuItem
             // 
             this.下载管理ToolStripMenuItem.Name = "下载管理ToolStripMenuItem";
-            this.下载管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.下载管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.下载管理ToolStripMenuItem.Text = "下载管理";
             // 
             // 开发工具ToolStripMenuItem
             // 
             this.开发工具ToolStripMenuItem.Name = "开发工具ToolStripMenuItem";
-            this.开发工具ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.开发工具ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.开发工具ToolStripMenuItem.Text = "开发工具";
             // 
             // panel2
@@ -503,6 +507,7 @@
             this.UpdateBmBtt.TabIndex = 2;
             this.UpdateBmBtt.Text = "修改";
             this.UpdateBmBtt.UseVisualStyleBackColor = true;
+            this.UpdateBmBtt.Click += new System.EventHandler(this.UpdateBmBtt_Click);
             // 
             // bookMarkTree
             // 
@@ -529,6 +534,12 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // 关于ToolStripMenuItem
+            // 
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.关于ToolStripMenuItem.Text = "关于";
             // 
             // MainForm
             // 
@@ -613,6 +624,7 @@
         private System.Windows.Forms.Button DeleteRecordBtt;
         private System.Windows.Forms.Button ClearRecorBtt;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
 
     }
 }

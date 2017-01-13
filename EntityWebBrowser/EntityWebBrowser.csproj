@@ -84,6 +84,12 @@
     <Compile Include="Entity\BookMark.cs" />
     <Compile Include="Entity\Catalog.cs" />
     <Compile Include="Entity\Record.cs" />
+    <Compile Include="UI\CatalogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CatalogForm.Designer.cs">
+      <DependentUpon>CatalogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Util\PrimaryKeyAttribute.cs" />
     <EmbeddedResource Include="UI\BookMarkForm.resx">
       <DependentUpon>BookMarkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CatalogForm.resx">
+      <DependentUpon>CatalogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
