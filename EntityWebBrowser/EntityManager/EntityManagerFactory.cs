@@ -12,40 +12,25 @@ namespace EntityWebBrowser.EntityManager
     /// </summary>
     class EntityManagerFactory
     {
-        private static RecordManager recordManager = null;
         public static RecordManager RecordManager
         {
             get
             {
-                if (recordManager == null)
-                {
-                    recordManager = new RecordManager();
-                }
-                return recordManager;
+               return RecordManager.Instance;
             }
         }
-        private static BookMarkManager bookMarkManager = null;
         public static BookMarkManager BookMarkManager
         {
             get
             {
-                if (bookMarkManager == null)
-                {
-                    bookMarkManager = new BookMarkManager();
-                }
-                return bookMarkManager;
+                return BookMarkManager.Instance;
             }
         }
-        private static CatalogManager catalogManager = null;
         public static CatalogManager CatalogManager
         {
             get
             {
-                if (catalogManager == null)
-                {
-                    catalogManager = new CatalogManager();
-                }
-                return catalogManager;
+                return CatalogManager.Instance;
             }
         }
     }

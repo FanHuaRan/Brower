@@ -17,5 +17,23 @@ namespace EntityWebBrowser.EntityManager
         {
             return this.context.Catalogs.Where(p => p.CatalogName == name).ToList<Catalog>();
         }
+
+        private CatalogManager()
+            : base()
+        {
+
+        }
+        private static CatalogManager instance = null;
+        public static CatalogManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new CatalogManager();
+                }
+                return instance;
+            }
+        }
     }
 }

@@ -17,5 +17,22 @@ namespace EntityWebBrowser.EntityManager
         {
             return this.context.Records.Where(p => p.Title == title).ToList<Record>();
         }
+        private RecordManager()
+            : base()
+        {
+
+        }
+        private static RecordManager instance = null;
+        public static RecordManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RecordManager();
+                }
+                return instance;
+            }
+        }
     }
 }

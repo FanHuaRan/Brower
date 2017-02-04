@@ -28,5 +28,22 @@ namespace EntityWebBrowser.EntityManager
         {
             return context.BookMarks.Where(p => p.Title == title).ToList<BookMark>();
         }
+        private BookMarkManager()
+            : base()
+        {
+
+        }
+        private static BookMarkManager instance = null;
+        public static BookMarkManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new BookMarkManager();
+                }
+                return instance;
+            }
+        }
     }
 }
